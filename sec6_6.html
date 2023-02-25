@@ -7,11 +7,8 @@
         <script>
             function solution(n, k){
                 let answer;
-                // let queue=Array.from({length:n}, (v, i)=>i+1);
-                let queue = []; 
-                for(let i=0; i<n; i++){
-                    queue.push(i+1);
-                }
+                let queue=Array.from({length:n}, (v, i)=>i+1);
+
                 while(queue.length){
                     for(let j=1; j<k; j++){
                         queue.push(queue.shift());
