@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution1(arr1){
+                let answer=arr1;
+                let positive = [];
+                let negative = [];
+                for(let x of arr1){
+                    if(x>0) positive.push(x);
+                    else negative.push(x);
+                }
+                answer = negative.concat(positive);
+                return answer;
+            }
+
+            let arr1=[1, 2, 3, -3, -2, 5, 6, -6];
+            console.log(solution1(arr1));
+
+            function solution2(arr2){
+                let answer=arr2;
+               
+                for(let i=0; i<arr2.length-1; i++){
+                    for(let j=0; j<arr2.length-1-i; j++){
+                        if(arr2[j]>0 && arr2[j+1]<0){
+                            [arr2[j], arr2[j+1]] = [arr2[j+1], arr2[j]];
+                        }
+                    }
+                }
+            }
+
+            let arr2=[1, 2, 3, -3, -2, 5, 6, -6];
+            console.log(solution1(arr2));
+        </script>
+    </body>
+</html>
+
+
