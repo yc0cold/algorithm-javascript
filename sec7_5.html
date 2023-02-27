@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(size, arr){
+                let answer = Array.from({length:size}, ()=>0);
+                let temp = 0;
+                let miss = -1;
+                for(let x of arr){
+                    for(let i=0; i<answer.length; i++){
+                        if(x===answer[i]){
+                            temp = answer[i];
+                            for(let j=i; j>=1; j--){
+                                answer[j] = answer[j-1];
+                            }
+                            answer[0] = temp;
+                            console.log(answer);
+                            miss = 0;
+                            break;
+                        }else{
+                            miss = -1;
+                        }
+                    }
+                    if(miss === -1){
+                        for(let j=answer.length-1; j>=1; j--){
+                                answer[j] = answer[j-1];
+                            }
+                        answer[0] = x;
+                        console.log(answer);
+                    }
+                }
+                return answer;
+            }
+
+            let arr=[1, 2, 3, 2, 6, 2, 3, 5, 7];
+            console.log(solution(5, arr));
+        </script>
+    </body>
+</html>
+
