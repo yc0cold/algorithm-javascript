@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(times){
+                let answer=Number.MIN_SAFE_INTEGER;
+                let T_line=[];
+                let temp = 1;
+                times.sort((a,b) => a[1]-b[1]);
+                
+                for(let i=0; i<times.length-1; i++){
+                    temp = 1;
+                    for(let j=i; j<times.length; j++){
+                        if(times[j][0] > times[i][0] && times[j][0] < times[i][1]) temp++;
+                    }
+                    if(temp > answer) {
+                        answer = temp;
+                    }
+                    console.log("answer: "+ answer);
+                    console.log("temp: "+ temp);
+                }
+                console.log(times);
+                return answer;
+            }
+
+            let arr=[[14, 18], [12, 15], [15, 20], [20, 30], [5, 14]];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
