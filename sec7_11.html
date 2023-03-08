@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function addArr(songs, capacity, min){
+                let sum = 0;
+                let count = 1;
+                console.log("==========시작===========");
+                console.log("capacity: " + capacity);
+                for(let x of songs){
+                    sum+=x;
+                    console.log("sum: " + sum);
+                    if(sum > capacity){
+                        console.log("==========if문=========");
+                        sum = x;
+                        count++;
+                    }
+                    if(count > min) return false;
+                }
+                return true;
+            }
+            function solution(m, songs){
+                let answer;
+                let lt=Math.max(...songs);
+                let rt = songs.reduce((a,b) => a+b);
+
+                while(lt<=rt){
+                    let mid = parseInt((lt+rt)/2);
+                    if(addArr(songs, mid, m)){
+                        answer = mid;
+                        rt = mid-1;
+                    }else{
+                        lt = mid+1;
+                    }
+                    console.log(answer);
+                }
+                
+                return answer;
+            }
+
+            let arr=[1, 2, 3, 4, 5, 6, 7, 8, 9];
+            console.log(solution(3, arr));
+        </script>
+    </body>
+</html>
